@@ -2,7 +2,7 @@
   <div id="app">
     <!-- Questions: display a div for each question -->
     <!-- show only if the index of the quetion is equal to the question index -->
-    <div v-for="(quiz, index) in quizez" v-show="index === questionindex">
+    <div :key="index" v-for="(quiz, index) in quizez" v-show="index === questionindex">
       <!-- display the quiz Category -->
       <h1>{{ quiz.category }}</h1>
       <!-- display the quiz question -->
@@ -10,10 +10,10 @@
       <!-- Responses: display a li for each possible response with a radio button -->
       <ol>
         <!--display the quiz options -->
-        <li v-for="(answer, index) in quiz.incorrect_answers">
+        <li :key="index2" v-for="(answer, index2) in quiz.incorrect_answers">
           <label>
             <!-- bind the options to the array index of the answers array that matches this index -->
-            <input type="radio" name="answer" v-model="answers[index]" :value="answer"> {{answer}}
+            <input type="radio" :name="'name' + index" v-model="answers[index]" :value="answer"> {{answer}}
           </label>
         </li>
       </ol>
@@ -78,96 +78,96 @@ var quiz_questions = [
       "Mercury",
       "Jupiter"
     ]
-  },
-  {
-    "category": "Entertainment: Books",
-    "type": "multiple",
-    "difficulty": "hard",
-    "question": "What is Ron Weasley's middle name?",
-    "correct_answer": "Bilius",
-    "incorrect_answers": [
-      "Bilius",
-      "Arthur",
-      "John",
-      "Dominic"
-    ]
-  },
-  {
-    "category": "Politics",
-    "type": "multiple",
-    "difficulty": "medium",
-    "question": "Before 2011, 'True Capitalist Radio' was known by a different name. What was that name?",
-    "correct_answer": "True Conservative Radio",
-    "incorrect_answers": [
-      "True Conservative Radio",
-      "True Republican Radio",
-      "Texan Capitalist Radio",
-      "United Capitalists"
-    ]
-  },
-  {
-    "category": "Entertainment: Film",
-    "type": "multiple",
-    "difficulty": "medium",
-    "question": "This movie contains the quote, 'I love the smell of napalm in the morning!'",
-    "correct_answer": "Apocalypse Now",
-    "incorrect_answers": [
-      "Apocalypse Now",
-      "Platoon",
-      "The Deer Hunter",
-      "Full Metal Jacket"
-    ]
-  },
-  {
-    "category": "History",
-    "type": "multiple",
-    "difficulty": "medium",
-    "question": "The Herero genocide was perpetrated in Africa by which of the following colonial nations?",
-    "correct_answer": "Germany",
-    "incorrect_answers": [
-      "Germany",
-      "Britain",
-      "Belgium",
-      "France"
-    ]
-  },
-  {
-    "category": "Entertainment: Music",
-    "type": "boolean",
-    "difficulty": "medium",
-    "question": "Ashley Frangipane performs under the stage name Halsey.",
-    "correct_answer": "True",
-    "incorrect_answers": [
-      "True",
-      "False"
-    ]
-  },
-  {
-    "category": "Entertainment: Books",
-    "type": "multiple",
-    "difficulty": "easy",
-    "question": "Under what pseudonym did Stephen King publish five novels between 1977 and 1984?",
-    "correct_answer": "Richard Bachman",
-    "incorrect_answers": [
-      "Richard Bachman",
-      "J. D. Robb",
-      "Mark Twain",
-      "Lewis Carroll"
-    ]
-  },
-  {
-    "category": "History",
-    "type": "multiple",
-    "difficulty": "medium",
-    "question": "In what prison was Adolf Hitler held in 1924?",
-    "correct_answer": "Landsberg Prison",
-    "incorrect_answers": [
-      "Landsberg Prison",
-      "Spandau Prison",
-      "Ebrach Abbey",
-      "Hohenasperg"
-    ]
   }
+  // {
+  //   "category": "Entertainment: Books",
+  //   "type": "multiple",
+  //   "difficulty": "hard",
+  //   "question": "What is Ron Weasley's middle name?",
+  //   "correct_answer": "Bilius",
+  //   "incorrect_answers": [
+  //     "Bilius",
+  //     "Arthur",
+  //     "John",
+  //     "Dominic"
+  //   ]
+  // },
+  // {
+  //   "category": "Politics",
+  //   "type": "multiple",
+  //   "difficulty": "medium",
+  //   "question": "Before 2011, 'True Capitalist Radio' was known by a different name. What was that name?",
+  //   "correct_answer": "True Conservative Radio",
+  //   "incorrect_answers": [
+  //     "True Conservative Radio",
+  //     "True Republican Radio",
+  //     "Texan Capitalist Radio",
+  //     "United Capitalists"
+  //   ]
+  // },
+  // {
+  //   "category": "Entertainment: Film",
+  //   "type": "multiple",
+  //   "difficulty": "medium",
+  //   "question": "This movie contains the quote, 'I love the smell of napalm in the morning!'",
+  //   "correct_answer": "Apocalypse Now",
+  //   "incorrect_answers": [
+  //     "Apocalypse Now",
+  //     "Platoon",
+  //     "The Deer Hunter",
+  //     "Full Metal Jacket"
+  //   ]
+  // },
+  // {
+  //   "category": "History",
+  //   "type": "multiple",
+  //   "difficulty": "medium",
+  //   "question": "The Herero genocide was perpetrated in Africa by which of the following colonial nations?",
+  //   "correct_answer": "Germany",
+  //   "incorrect_answers": [
+  //     "Germany",
+  //     "Britain",
+  //     "Belgium",
+  //     "France"
+  //   ]
+  // },
+  // {
+  //   "category": "Entertainment: Music",
+  //   "type": "boolean",
+  //   "difficulty": "medium",
+  //   "question": "Ashley Frangipane performs under the stage name Halsey.",
+  //   "correct_answer": "True",
+  //   "incorrect_answers": [
+  //     "True",
+  //     "False"
+  //   ]
+  // },
+  // {
+  //   "category": "Entertainment: Books",
+  //   "type": "multiple",
+  //   "difficulty": "easy",
+  //   "question": "Under what pseudonym did Stephen King publish five novels between 1977 and 1984?",
+  //   "correct_answer": "Richard Bachman",
+  //   "incorrect_answers": [
+  //     "Richard Bachman",
+  //     "J. D. Robb",
+  //     "Mark Twain",
+  //     "Lewis Carroll"
+  //   ]
+  // },
+  // {
+  //   "category": "History",
+  //   "type": "multiple",
+  //   "difficulty": "medium",
+  //   "question": "In what prison was Adolf Hitler held in 1924?",
+  //   "correct_answer": "Landsberg Prison",
+  //   "incorrect_answers": [
+  //     "Landsberg Prison",
+  //     "Spandau Prison",
+  //     "Ebrach Abbey",
+  //     "Hohenasperg"
+  //   ]
+  // }
 ]
 export default {
   //name of the component
