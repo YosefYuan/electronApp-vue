@@ -1,4 +1,5 @@
 <template>
+<transition name="slide">
   <div id="app">
     <!-- Questions: display a div for each question -->
     <!-- show only if the index of the quetion is equal to the question index -->
@@ -33,6 +34,7 @@
     <!-- show total score, if the questions are completed -->
     <span v-if="questionindex == quizez.length">Your Total score is {{score}} / {{quizez.length}}</span>
   </div>
+</transition>
 </template>
 
 <script>
@@ -68,25 +70,21 @@ var quiz_questions = [
     incorrect_answers: ["Venus", "Mars", "Mercury", "Jupiter"]
   },
   {
-    "category": "Entertainment: Books",
-    "type": "multiple",
-    "difficulty": "hard",
-    "question": "What is Ron Weasley's middle name?",
-    "correct_answer": "Bilius",
-    "incorrect_answers": [
-      "Bilius",
-      "Arthur",
-      "John",
-      "Dominic"
-    ]
+    category: "Entertainment: Books",
+    type: "multiple",
+    difficulty: "hard",
+    question: "What is Ron Weasley's middle name?",
+    correct_answer: "Bilius",
+    incorrect_answers: ["Bilius", "Arthur", "John", "Dominic"]
   },
   {
-    "category": "Politics",
-    "type": "multiple",
-    "difficulty": "medium",
-    "question": "Before 2011, 'True Capitalist Radio' was known by a different name. What was that name?",
-    "correct_answer": "True Conservative Radio",
-    "incorrect_answers": [
+    category: "Politics",
+    type: "multiple",
+    difficulty: "medium",
+    question:
+      "Before 2011, 'True Capitalist Radio' was known by a different name. What was that name?",
+    correct_answer: "True Conservative Radio",
+    incorrect_answers: [
       "True Conservative Radio",
       "True Republican Radio",
       "Texan Capitalist Radio",
@@ -94,12 +92,13 @@ var quiz_questions = [
     ]
   },
   {
-    "category": "Entertainment: Film",
-    "type": "multiple",
-    "difficulty": "medium",
-    "question": "This movie contains the quote, 'I love the smell of napalm in the morning!'",
-    "correct_answer": "Apocalypse Now",
-    "incorrect_answers": [
+    category: "Entertainment: Film",
+    type: "multiple",
+    difficulty: "medium",
+    question:
+      "This movie contains the quote, 'I love the smell of napalm in the morning!'",
+    correct_answer: "Apocalypse Now",
+    incorrect_answers: [
       "Apocalypse Now",
       "Platoon",
       "The Deer Hunter",
@@ -107,36 +106,30 @@ var quiz_questions = [
     ]
   },
   {
-    "category": "History",
-    "type": "multiple",
-    "difficulty": "medium",
-    "question": "The Herero genocide was perpetrated in Africa by which of the following colonial nations?",
-    "correct_answer": "Germany",
-    "incorrect_answers": [
-      "Germany",
-      "Britain",
-      "Belgium",
-      "France"
-    ]
+    category: "History",
+    type: "multiple",
+    difficulty: "medium",
+    question:
+      "The Herero genocide was perpetrated in Africa by which of the following colonial nations?",
+    correct_answer: "Germany",
+    incorrect_answers: ["Germany", "Britain", "Belgium", "France"]
   },
   {
-    "category": "Entertainment: Music",
-    "type": "boolean",
-    "difficulty": "medium",
-    "question": "Ashley Frangipane performs under the stage name Halsey.",
-    "correct_answer": "True",
-    "incorrect_answers": [
-      "True",
-      "False"
-    ]
+    category: "Entertainment: Music",
+    type: "boolean",
+    difficulty: "medium",
+    question: "Ashley Frangipane performs under the stage name Halsey.",
+    correct_answer: "True",
+    incorrect_answers: ["True", "False"]
   },
   {
-    "category": "Entertainment: Books",
-    "type": "multiple",
-    "difficulty": "easy",
-    "question": "Under what pseudonym did Stephen King publish five novels between 1977 and 1984?",
-    "correct_answer": "Richard Bachman",
-    "incorrect_answers": [
+    category: "Entertainment: Books",
+    type: "multiple",
+    difficulty: "easy",
+    question:
+      "Under what pseudonym did Stephen King publish five novels between 1977 and 1984?",
+    correct_answer: "Richard Bachman",
+    incorrect_answers: [
       "Richard Bachman",
       "J. D. Robb",
       "Mark Twain",
@@ -144,12 +137,12 @@ var quiz_questions = [
     ]
   },
   {
-    "category": "History",
-    "type": "multiple",
-    "difficulty": "medium",
-    "question": "In what prison was Adolf Hitler held in 1924?",
-    "correct_answer": "Landsberg Prison",
-    "incorrect_answers": [
+    category: "History",
+    type: "multiple",
+    difficulty: "medium",
+    question: "In what prison was Adolf Hitler held in 1924?",
+    correct_answer: "Landsberg Prison",
+    incorrect_answers: [
       "Landsberg Prison",
       "Spandau Prison",
       "Ebrach Abbey",
@@ -206,5 +199,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s;
+}
+.slide-enter,
+.slide-leave-to {
+  transform: translate3d(-100%, 0);
 }
 </style>
